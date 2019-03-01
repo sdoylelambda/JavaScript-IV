@@ -8,7 +8,7 @@ class Person {
     this.gender = attributes.gender;
     }
     speak() {
-        console.log(`Hello m name is ${this.name}, I am from ${location}.`);
+        console.log(`Hello my name is ${this.name}, I am from ${this.location}.`);
     }
 }
 
@@ -21,11 +21,11 @@ class Instructor extends Person {
     }
 
     demo(subject) {
-        console.log(`Today we are learning about ${subject}.`); 
+        console.log(`Today we are learning about ${this.subject}.`); 
     }
     //grade(student, subject) {
-    grade(obj) {
-        const {student, subject} = obj
+    grade(student, subject) {
+        // const {student, subject} = obj
         console.log(`${student.name} receives a perfect score on ${subject}.`);
     }
 }
@@ -60,7 +60,7 @@ class ProjectManager extends Instructor {
     standUp(channel) {
         console.log(`${this.name} announces to ${channel}, @channel standy times!​​​​​`);
     }
-    debugsCode(student) {
+    debugsCode(student, subject) {
         console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
     }
 }
@@ -72,7 +72,8 @@ const josh = new Instructor({
     gender: 'male',
     favLanguage: 'JavaScript',
     specialty: 'Front-end',
-    catchPhrase: `Don't forget the homies`
+    catchPhrase: `Don't forget the homies`,
+    favSubject: 'CSS',
   });
 
   const liz = new ProjectManager({
@@ -82,7 +83,9 @@ const josh = new Instructor({
     gender: 'male',
     favLanguage: 'JavaScript',
     specialty: 'Front-end',
-    favInstructor: `Josh`
+    favInstructor: `Josh`,
+    listsSubjects: `CSS, Javascript, HTML`,
+    favSubject: 'CSS',
   });
 
 
@@ -102,3 +105,17 @@ const sean = new Student({
   console.log(liz.favInstructor);
   console.log(josh.specialty);
   console.log(sean.location);
+ 
+
+  josh.speak();
+  josh.demo('variables');
+  
+
+liz.speak();
+
+
+sean.speak();
+josh.demo('Redux');
+josh.grade(sean, 'const vs let');
+liz.debugsCode(sean, 'DS-Algos');
+liz.standUp('#Code-Allstars');
